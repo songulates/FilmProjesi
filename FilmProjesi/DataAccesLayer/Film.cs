@@ -11,9 +11,13 @@ namespace FilmProjesi.DataAccesLayer
 
         [Key]
         public int ID { get; set; }
+        [Required(ErrorMessage ="not empty")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "not empty")]
         public string Genre { get; set; }
+        [Required(ErrorMessage = "not empty")]
         public string Director { get; set; }
+        
         //blog
         public int Year { get; set; }
 
