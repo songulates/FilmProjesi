@@ -1,4 +1,6 @@
 ﻿using FilmProjesi.DataAccesLayer;
+using FilmProjesi.Fluentfilm;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,14 +24,23 @@ namespace FilmProjesi.Controllers
         }
         
         [HttpGet("Filter")]
-        public List<Film> sort(string Filmadı, int? yearfirst, int? yearsecond)
+        public List<Film> Filter(string Filmadı, string director,string filmturu, int? yearfirst, int? yearsecond, int? belirliyil)
         {
 
             using var c = new Context();
             var result = c.Films.AsQueryable();
+            
             if (!string.IsNullOrEmpty(Filmadı))
             {
                 result = result.Where(x => x.Name.Contains(Filmadı));
+            }
+            if (!string.IsNullOrEmpty(director))
+            {
+                result = result.Where(x => x.Director.Contains(director));
+            }
+            if (!string.IsNullOrEmpty(filmturu))
+            {
+                result = result.Where(x => x.Genre.Contains(filmturu));
             }
             if (yearfirst.HasValue)
             {
@@ -39,6 +50,10 @@ namespace FilmProjesi.Controllers
             if (yearsecond.HasValue)
             {
                 result = result.Where(x => x.Year <= yearsecond);
+            }
+            if (belirliyil.HasValue)
+            {
+                result = result.Where(x => x.Year == belirliyil);
             }
             var value = result.Select(x => new Film
             {
@@ -56,9 +71,21 @@ namespace FilmProjesi.Controllers
         [HttpPost]
         public IActionResult CreateFilm(Film film)    
         {
-            using var c = new Context();
-            c.Add(film);
-            c.SaveChanges();
+            FilmFluentValidator fv = new FilmFluentValidator();
+            ValidationResult result = fv.Validate(film);
+            if (result.IsValid)
+            {
+                using var c = new Context();
+                c.Add(film);
+                c.SaveChanges();
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return Ok();
         }
         [HttpDelete("{id}")]
@@ -78,6 +105,8 @@ namespace FilmProjesi.Controllers
             }
            
         }
+
+       
 
         [HttpPut]
         public IActionResult UpdateFilm(Film film)

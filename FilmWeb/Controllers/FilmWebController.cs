@@ -31,7 +31,7 @@ namespace FilmWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateFilm(Class1 p)
         {
-            FilmValidator fv = new FilmValidator();
+            FilmValid fv = new FilmValid();
             ValidationResult result = fv.Validate(p);
             if (result.IsValid)
             {

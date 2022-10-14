@@ -1,21 +1,21 @@
-﻿using FluentValidation;
+﻿using FilmProjesi.DataAccesLayer;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FilmWeb.FluentValidator
+namespace FilmProjesi.Fluentfilm
 {
-    public class FilmValid : AbstractValidator<Controllers.Class1>
+    public class FilmFluentValidator : AbstractValidator<Film>
     {
-        public FilmValid()
+        public FilmFluentValidator()
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage("Boş Bırakmayınız");
             RuleFor(x => x.Genre).NotEmpty().WithMessage("Boş Bırakmayınız");
             RuleFor(x => x.Director).NotEmpty().WithMessage("Boş Bırakmayınız");
             RuleFor(x => x.Year).NotEmpty().GreaterThan(1900).LessThan(2100).WithMessage("Girdiğiniz Tarih 1900 den büyük ve 2100'den küçük olmalı");
-
-
         }
     }
+    
 }
