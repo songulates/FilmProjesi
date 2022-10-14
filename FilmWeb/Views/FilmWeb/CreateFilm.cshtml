@@ -1,0 +1,32 @@
+﻿@using FilmWeb.Controllers
+@model Class1
+@{
+    ViewData["Title"] = "CreateFilm";
+    Layout = "~/Views/Shared/FilmLayout.cshtml";
+}
+<div class="container">
+    <form method="post">
+
+        <label> Film Name</label> &nbsp
+        @Html.TextBoxFor(x => x.Name)
+        @Html.ValidationMessageFor(x => x.Name)
+        @*<input type="text" asp-for="@Model.Name" class="form-control" />*@
+        <br />
+        <label> Film Genre</label>&nbsp
+        @Html.TextBoxFor(x => x.Genre)
+        @Html.ValidationMessageFor(x => x.Genre)
+        <br />
+        <label> Film Director</label>&nbsp
+        @Html.TextBoxFor(x => x.Director)
+        @Html.ValidationMessageFor(x => x.Director)
+        <br />
+        <label> Film Year</label>&nbsp
+        @Html.TextBoxFor(x => x.Year)
+        @Html.ValidationMessageFor(x => x.Year)
+
+
+        <br />
+        <button type="submit" class="btn btn-success"> Film Ekleyin   </button>
+
+    </form>
+</div>
