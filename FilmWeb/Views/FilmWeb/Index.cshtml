@@ -1,13 +1,14 @@
 ﻿@using FilmWeb.Controllers
-@model List<Class1>
+@model IEnumerable<Class1>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/FilmLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<html>
-<body>
-    <div class="container">
-        
+
+
+
+<div class="container">
+    <form method="get">
         <table class="table-bordered" style="padding-left: 50px;">
             <tr>
                 <th>ID</th>
@@ -37,12 +38,12 @@
             }
         </table>
 
-        </br>
+
         <a href="/FilmWeb/CreateFilm/" class="btn btn-primary">Film Ekle</a>
 
-        </br>
-    </div>
+        </form>
+</div>
 
 
-</body>
-</html>
+
+

@@ -60,50 +60,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-
-                @*<div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                       
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-
-                    </ul>
-                    
-
-
-
-                </div>*@
             </nav>
 
         </div>
     </header>
-    <!--//header-->
-    <!--/banner-->
-    @*<div class="banner-inner">
-    </div>*@
-    <ol class="breadcrumb">
-        @*<li class="breadcrumb-item">
-            <a href="index.html">Home</a>
-        </li>*@
-        @*<li class="breadcrumb-item active">Blog3</li>*@
+    
     </ol>
-    <!--//banner-->
-    <!--/main-->
-    <!--//main-->
-    <!--footer-->
-    </br>
+    
+
     @RenderBody()
-    </br>
+    
     <footer>
         <div class="container">
             <div class="row">
@@ -153,14 +119,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <script>
         $(document).ready(function () {
-            /*
-                                    var defaults = {
-                                            containerID: 'toTop', // fading element id
-                                        containerHoverID: 'toTopHover', // fading element hover id
-                                        scrollSpeed: 1200,
-                                        easingType: 'linear'
-                                        };
-                                    */
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+      
+                                    
 
             $().UItoTop({
                 easingType: 'easeOutQuart'
@@ -168,11 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         });
     </script>
-    @*<a href="#home" class="scroll" id="toTop" style="display: block;">
-        <span id="toTopHover" style="opacity: 1;"> </span>
-    </a>*@
-
-    <!-- //Custom-JavaScript-File-Links -->
+    
     <script src="~/CoreBlogTema/Web/js/bootstrap.js"></script>
 
 
