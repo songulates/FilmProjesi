@@ -9,7 +9,7 @@ namespace FilmProjesi.DataAccesLayer
     public class SinemaSalonu
     {
         [Key]
-        [Required(ErrorMessage = "not empty")]
+        
         public string Name { get; set; }
         public int CinemaID { get; set; }
 
